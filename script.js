@@ -4,6 +4,9 @@ const BALANCE = document.getElementById("balance");
 const TAI = document.getElementById("tai");
 const XIU = document.getElementById("xiu");
 
+BALANCE.textContent=Number(localStorage.getItem("value"));
+console.log(localStorage.getItem("value"));
+
 function roll() {
   if(Number(BALANCE.textContent)<=0)
   {
@@ -29,17 +32,21 @@ function roll() {
     if (sum <= 10) {
       BALANCE.textContent = Number(BALANCE.textContent) + Number(MONEY);
       RESULT.textContent = "XIU";
+      localStorage.setItem("value",BALANCE.textContent);
     } else {
       BALANCE.textContent = Number(BALANCE.textContent) - Number(MONEY);
       RESULT.textContent = "TAI";
+      localStorage.setItem("value",BALANCE.textContent);
     }
   } else if (TAI.checked) {
     if (sum > 10) {
       BALANCE.textContent = Number(BALANCE.textContent) + Number(MONEY);
       RESULT.textContent = "TAI";
+      localStorage.setItem("value",BALANCE.textContent);
     } else {
       BALANCE.textContent = Number(BALANCE.textContent) - Number(MONEY);
       RESULT.textContent = "XIU";
+      localStorage.setItem("value",BALANCE.textContent);
     }
   }
   else{
